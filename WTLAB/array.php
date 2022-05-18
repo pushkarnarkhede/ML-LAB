@@ -1,40 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Array</title>
-</head>
-<body>
-
-<?php 
-$car = array('sedan','xuv','sport');
+<?php
+/*$numbers = array( "nikita", 2, 3, "dhvani", 5);
 echo "Numeric array";
-foreach ($car as $key => $value) {
-	echo $value ."<br>";
-}
+sort($numbers);
+rsort($numbers);
+foreach( $numbers as $value ) {
+    echo "Value is $value <br />";
+ }
 
-$carPrice = array("bmw" => "10", "audi"=> "20");
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
 echo "associative array <br>";
-foreach($carPrice as $carName => $price){
-	echo $carName . " " .$price ."<br>";
-}
-
+asort($age);
+ksort($age);
+arsort($age);
+krsort($age);
+foreach($age as $x => $x_value) {
+  echo "Key=" . $x . ", Value=" . $x_value;
+  echo "<br>";}*/
 
 echo "multidimensional array <br>";
-
 $carr = array(
 	array("abc", 10,20),
 	array("pqr",20,30 )
 );
 
+echo "reverse order";
+array_multisort($carr, SORT_ASC, $array);
 foreach($carr as $index => $data){
 	foreach($data as $key => $val){
 		echo $val ."<br>";
 	}
 }
-
 ?>
-
-</body>
-</html>

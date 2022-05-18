@@ -19,9 +19,9 @@
 $s_id = $s_name = $s_email = $s_hsc = $s_jee = "";
 
 
-$localhost = "localhost:3306";
+$localhost = "localhost";
 $user = "root";
-$pass = "root";
+$pass = "";
 
 $id = $_REQUEST['studentID'];
 $s_name = $_REQUEST['studentName'];
@@ -29,7 +29,7 @@ $s_email = $_REQUEST['studentEmail'];
 $s_hsc = $_REQUEST['marks'];
 $s_jee = $_REQUEST['jeeScore'];
 
-// echo $id . $s_name .$s_email .$s_hsc .$s_jee;
+ echo $id . $s_name .$s_email .$s_hsc .$s_jee;
 
 
 $conn = mysqli_connect($localhost,$user,$pass);
@@ -37,17 +37,23 @@ $conn = mysqli_connect($localhost,$user,$pass);
 if(!$conn){
 	echo "Error!";
 }else{
-	echo "Connected DB <br>";
+	echo "Connected  <br>";
+}
+$str= "create database companyReg";
+if(mysqli_query($conn,$str)){
+	echo "db connected";
+} else{
+	echo "error not connectwe"
 }
 
 mysqli_select_db($conn,"companyReg");
 
-// $createTable = "CREATE TABLE student(studentId int, studentName varchar(50),emailId varchar(30),grade12 int,jeeScore int)";
-// if(mysqli_query($conn,$createTable)){
-// 	echo "table created";
-// }else{
-// 	echo "Error";
-// }
+$createTable = "CREATE TABLE student(studentId int, studentName varchar(50),emailId varchar(30),grade12 int,jeeScore int)";
+if(mysqli_query($conn,$createTable)){
+echo "table created";
+}else{
+ 	echo "Error";
+ }
 
 // $insertTable = "INSERT INTO student(studentId , studentName,emailId, grade12,jeeScore) VALUES('$id','$s_name','$s_email','$s_hsc','$s_jee')";
 
@@ -56,7 +62,7 @@ mysqli_select_db($conn,"companyReg");
 // }else{
 // 	echo "fuck";
 // }
-$fetchData = "select *from student limit 5";
+$fetchData = "select *from student limit 2";
 $data = mysqli_query($conn,$fetchData);
 
 while($row = mysqli_fetch_assoc($data)){
